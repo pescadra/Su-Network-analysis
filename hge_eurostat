@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eurostat HGE Research — Waarom scoort België zo laag op HGE?</title>
+<style>
+:root{--g:#00734A;--dk:#1a1a2e;--bl:#1F4E79;--bg:#f8faf9;--or:#d97706;--rd:#b91c1c;--cg:#15803d;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',-apple-system,sans-serif;background:var(--bg);color:#333;line-height:1.65;font-size:15px;}
+header{background:linear-gradient(135deg,var(--dk) 0%,var(--bl) 100%);color:white;padding:3rem 2rem;text-align:center;}
+header h1{font-size:2rem;margin-bottom:.4rem;}
+header .sub{font-size:1rem;opacity:.88;max-width:760px;margin:.4rem auto 0;}
+.badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:.25rem 1rem;font-size:.8rem;margin-top:.7rem;}
+nav{background:white;border-bottom:1px solid #e5e7eb;padding:.6rem 1.5rem;position:sticky;top:0;z-index:10;}
+nav ul{display:flex;gap:1.2rem;list-style:none;max-width:1000px;margin:0 auto;flex-wrap:wrap;}
+nav a{text-decoration:none;color:var(--bl);font-size:.82rem;font-weight:500;}
+nav a:hover{color:var(--g);}
+main{max-width:1000px;margin:2.5rem auto 4rem;padding:0 1.5rem;}
+section{margin-bottom:3rem;}
+h2{font-size:1.35rem;color:var(--dk);border-left:4px solid var(--g);padding-left:.75rem;margin-bottom:1.2rem;margin-top:2rem;}
+h3{font-size:1.05rem;color:var(--bl);margin:1.6rem 0 .6rem;font-weight:600;}
+h4{font-size:.95rem;color:#444;margin:1.2rem 0 .4rem;font-weight:600;}
+p{margin-bottom:.75rem;font-size:.93rem;}
+ul.plain{list-style:disc;padding-left:1.4rem;margin-bottom:.8rem;}
+ul.plain li{margin-bottom:.3rem;font-size:.93rem;}
+/* Tables */
+.tw{overflow-x:auto;margin:1rem 0;}
+table{width:100%;border-collapse:collapse;font-size:.85rem;}
+thead tr{background:var(--dk);color:white;}
+thead th{padding:.5rem .8rem;text-align:left;font-weight:600;white-space:nowrap;}
+tbody tr:nth-child(even){background:#f1f5f2;}
+tbody tr:hover{background:#e6f0eb;}
+tbody td{padding:.45rem .8rem;border-bottom:1px solid #e2e8e4;vertical-align:top;}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.rt{font-weight:700;background:#ddeee5!important;}
+/* Status icons in table cells */
+td.ok{color:var(--cg);font-weight:600;}
+td.warn{color:var(--or);font-weight:600;}
+td.no{color:var(--rd);font-weight:600;}
+/* KPI cards */
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.2rem 0;}
+.kc{background:white;border-radius:10px;padding:1.1rem;box-shadow:0 1px 6px rgba(0,0,0,.08);text-align:center;}
+.kc .v{font-size:1.9rem;font-weight:700;color:var(--rd);line-height:1.2;}
+.kc .v.ok{color:var(--cg);}
+.kc .l{font-size:.8rem;color:#666;margin-top:.25rem;}
+.kc .c{font-size:.75rem;color:#999;margin-top:.15rem;}
+/* Callouts */
+.call{border-radius:8px;padding:.9rem 1.1rem;margin:1.1rem 0;font-size:.9rem;}
+.call.find{background:#e8f4ed;border-left:4px solid var(--g);}
+.call.warn{background:#fef3c7;border-left:4px solid var(--or);}
+.call.conc{background:#eff6ff;border-left:4px solid var(--bl);}
+.call.rej{background:#fef2f2;border-left:4px solid var(--rd);}
+.call strong{display:block;margin-bottom:.3rem;}
+/* Tags */
+.tag{display:inline-block;padding:.12rem .5rem;border-radius:10px;font-size:.72rem;font-weight:700;margin:0 .25rem;vertical-align:middle;}
+.tag.rej{background:#fee2e2;color:var(--rd);}
+.tag.ok{background:#dcfce7;color:#166534;}
+.tag.open{background:#fef3c7;color:#92400e;}
+/* Code block */
+pre{background:#1e293b;color:#e2e8f0;border-radius:8px;padding:1rem;font-size:.78rem;overflow-x:auto;margin:1rem 0;line-height:1.5;}
+/* Back link */
+a.back{display:inline-flex;align-items:center;gap:.4rem;color:var(--g);font-size:.88rem;text-decoration:none;margin-bottom:1.5rem;}
+a.back:hover{text-decoration:underline;}
+/* Decomp bar */
+.dbar{display:flex;border-radius:6px;overflow:hidden;height:28px;margin:.6rem 0;}
+.dseg{display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:white;}
+/* Footnote */
+.fn{font-size:.77rem;color:#888;margin-top:.4rem;}
+footer{text-align:center;padding:2rem;color:#999;font-size:.8rem;border-top:1px solid #eee;}
+footer a{color:var(--g);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Waarom scoort België zo laag op HGE / Young HGE?</h1>
+  <p class="sub">Oorzaken &amp; Onderzoeksvragen — Regionale decompositie, Shift-share NACE, Verdwenen gazelles &amp; Bronnen</p>
+  <span class="badge">Eurostat bd_hg · NBB jaarrekening · Sequenza · Dealroom · VLAIO-steun · KBO</span>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#probleem">Probleem</a></li>
+    <li><a href="#hypothesen">Hypothesen</a></li>
+    <li><a href="#methodo">Methodologie</a></li>
+    <li><a href="#oqs">Onderzoeksvragen</a></li>
+    <li><a href="#oq1">OQ1: Regionaal</a></li>
+    <li><a href="#oq3">OQ3: Shift-share</a></li>
+    <li><a href="#oq4">OQ4: Gazelles</a></li>
+    <li><a href="#bronnen">Bronnen</a></li>
+    <li><a href="#volgende">Volgende stappen</a></li>
+    <li><a href="index.html">← Index</a></li>
+  </ul>
+</nav>
+
+<main>
+<a href="index.html" class="back">← Terug naar overzicht</a>
+
+<!-- ====== PROBLEEM ====== -->
+<section id="probleem">
+<h2>Overzicht van het probleem</h2>
+<p>België presteert structureel ondermaats op High-Growth Enterprises (HGE) — bedrijven die 3 jaar lang ≥10% per jaar groeien in werknemers, startend van minimaal 10 werknemers (Eurostat-definitie).</p>
+<div class="kpi">
+  <div class="kc"><div class="v">0,2%</div><div class="l">Young HGE-share België (2022)</div><div class="c">EU-gemiddelde: 0,8% — factor 4 lager</div></div>
+  <div class="kc"><div class="v">7,3%</div><div class="l">HGE-aandeel België (2023)</div><div class="c">EU-gemiddelde: ~9% — structureel ondergemiddeld</div></div>
+  <div class="kc"><div class="v">5,4%</div><div class="l">HGE bijdrage aan werkgelegenheid</div><div class="c">EU-gem ~10% — laagste EU samen met CY en FR</div></div>
+</div>
+<p class="fn"><strong>Bron:</strong> EIS 2025 Country Profile, Eurostat bd_hg, eigen berekening op basis van NBB jaarrekening × referentietabel 2023.</p>
+</section>
+
+<!-- ====== HYPOTHESEN ====== -->
+<section id="hypothesen">
+<h2>Alle mogelijke oorzaken — geïnventariseerd</h2>
+<p>28 hypothesen gegroepeerd in 5 categorieën. Status per hypothese na eigen analyse:</p>
+
+<h3>Categorie M: Meetmethode &amp; datakwaliteit</h3>
+<div class="tw"><table>
+<thead><tr><th>#</th><th>Hypothese</th><th>Bron</th><th>Testbaar?</th></tr></thead>
+<tbody>
+<tr><td><strong>M1</strong></td><td><strong>Enterprise profiling verschilt per land</strong> — sommige landen consolideren groepsstructuren strenger, waardoor intragroep-transfers niet als echte groei tellen. België/Statbel doet dit wél (via RSZ), wat de teller drukt.</td><td>Eigen analyse (cel 17 transfer-detectie), Statbel vragenlijst</td><td class="ok">✅ Ja — F7 filter toont impact: 308 bedrijven uitgesloten</td></tr>
+<tr><td><strong>M2</strong></td><td><strong>M&amp;A-exclusie methoden variëren sterk</strong> — geen enkel land publiceert een uniforme drempel. UK gebruikt register-based, Noorwegen heuristieken, België/Statbel onbekend. Onze F6&lt;70% is een statistische proxy.</td><td>Eigen analyse cel 21 (literatuur 6 landen), OECD Manual</td><td class="ok">✅ Ja — F6 sweep toont sensitivity</td></tr>
+<tr><td><strong>M3</strong></td><td><strong>RSZ vs NBB databron</strong> — Eurostat gebruikt RSZ (~100% dekking); wij NBB (~90%). De ontbrekende 10% (eenmanszaken met personeel, buitenlandse werkgevers) mist in teller én noemer → minimaal effect op %.</td><td>Eigen analyse cel 20</td><td class="ok">✅ Verificatie via noemer-verschil (28.283 vs 35.150)</td></tr>
+<tr><td><strong>M4</strong></td><td><strong>VTE vs koppen (headcount)</strong> — verschillende landen meten groei op VTE, koppen, of uren. België gebruikt personen in loondienst (RSZ). Koppen overschat deeltijdwerk; VTE onderschat echte groei bij deeltijd-intensieve sectoren.</td><td>NBB Economic Review 2017 H5, eigen cel 15</td><td class="ok">✅ Ja — VTE vs koppen vergelijking beschikbaar</td></tr>
+<tr><td><strong>M5</strong></td><td><strong>Omzetgroei vs werknemersgroei</strong> — HGE kan op omzet OF werknemers gemeten worden; Eurostat publiceert beide. België scoort relatief beter op omzetgroei. Als landen selectief de gunstigste metric rapporteren → vergelijkbaarheid beperkt.</td><td>Eurostat Statistics Explained (juni 2025)</td><td class="warn">⚠️ Deels — eigen data enkel op koppen</td></tr>
+<tr><td><strong>M6</strong></td><td><strong>Leeftijdsregistratie (Young HGE)</strong> — Eurostat definieert "jong" als ≤5 jaar. Bij fusie/herstructurering kan een oude entiteit als nieuw geregistreerd worden. Landen die dit strenger filteren → minder young HGE.</td><td>OECD Manual, JRC 2020</td><td class="warn">⚠️ Deels — KBO oprichtingsdatum beschikbaar</td></tr>
+</tbody>
+</table></div>
+
+<h3>Categorie S: Structurele economische factoren</h3>
+<div class="tw"><table>
+<thead><tr><th>#</th><th>Hypothese</th><th>Bron</th><th>Testbaar?</th></tr></thead>
+<tbody>
+<tr><td><strong>S1</strong></td><td><strong>KMO-landschap met weinig middelgrote bedrijven</strong> — België heeft relatief weinig ondernemingen met &gt;10 WN t.o.v. populatie. De "missing middle" betekent een kleinere vijver waaruit HGE kunnen ontstaan.</td><td>Plan van aanpak docx, eigen observatie gazelles xlsx</td><td class="ok">✅ Ja — noemer-analyse per grootteklasse</td></tr>
+<tr><td><strong>S2</strong></td><td><strong>Arbeidsmarktrigiditeit + hoge loonkost</strong> — strikt gereguleerde arbeidsmarkt vertraagt reallocatie van werknemers van krimpende naar groeiende bedrijven. België heeft de hoogste arbeidskost per uur in EU na Luxemburg.</td><td>NBB Economic Review 2025 H10 (Bijnens)</td><td class="warn">⚠️ Indirect — groei per sector × arbeidsintensiviteit</td></tr>
+<tr><td><strong>S3</strong></td><td><strong>Zwakke business dynamism</strong> — lage instroom/uitstroom van bedrijven, complexe insolventieprocedures belemmeren "creatieve destructie". Weinig exits = weinig herstart + weinig ruimte voor groeiers.</td><td>OECD Foundations for Growth 2026</td><td class="warn">⚠️ Indirect — birth/death rates uit Eurostat vergelijkbaar</td></tr>
+<tr style="background:#fef2f2"><td><strong>S4 ❌</strong></td><td><del>Wallonië en Brussel drukken het federale cijfer</del> — <strong>WEERLEGD door OQ1</strong>: panelanalyse (VL 68,0% vs WA 70,2% vs BXL 69,1%) én asymmetrische noemer (VL 7,08% vs WA 6,84% vs BXL 8,14%) tonen dat regio's nagenoeg gelijk scoren. Vlaanderen draagt 62% van het gewicht. RIS 2025 bevestigt: WA=165% EU-gem op sales of innovations vs VL=82%.</td><td>Eigen OQ1a+OQ1b (gevalideerd), RIS 2025, Plan van aanpak docx</td><td class="ok">✅ Getest — <strong>hypothese verworpen</strong></td></tr>
+<tr><td><strong>S5 ❌</strong></td><td><strong>Sectorsamenstelling</strong> — België's economie is zwaarder gewogen naar dienstensectoren (handel, admin) die structureel lagere HGE-rates hebben. Landen met meer ICT/tech scoren hoger. — <strong>WEERLEGD door OQ3</strong>: 100% within-sector effect.</td><td>Eurostat heatmap (eigen cel 10), JRC 2020</td><td class="ok">✅ Ja — NACE-decompositie al uitgevoerd</td></tr>
+<tr><td><strong>S6</strong></td><td><strong>Managementvennootschappen/holdingstructuren</strong> — veel Belgische bedrijven zijn managementvennootschappen met &lt;10 WN die de feitelijke activiteit houden. De echte groei zit verborgen achter groepsstructuren die niet meetellen in de 10+ WN-noemer.</td><td>Plan van aanpak docx ("Bart zijn aanname")</td><td class="warn">⚠️ Deels — Sequenza groepsdata beschikbaar</td></tr>
+</tbody>
+</table></div>
+
+<h3>Categorie F: Financiering &amp; ecosysteem</h3>
+<div class="tw"><table>
+<thead><tr><th>#</th><th>Hypothese</th><th>Bron</th><th>Testbaar?</th></tr></thead>
+<tbody>
+<tr><td><strong>F1</strong></td><td><strong>Financieringskloof bij scale-upfase</strong> — niet bij de start maar bij doorgroei ontbreekt kapitaal. België 23e/33 landen op HGE-aandeel; zwakte zit bij schuldfinanciering, niet bij VC voor starters.</td><td>Vlerick/UGent (Standaert, Collewaert, Vanacker), 33 landen studie</td><td class="ok">✅ Ja — Dealroom funding × HGE kruising (vraag B3, B6)</td></tr>
+<tr><td><strong>F2</strong></td><td><strong>Vroege buitenlandse overname vóór gazelle-fase</strong> — veelbelovende starters worden overgenomen vóór ze de 3-jarige 10%+ groeidrempel halen → ze verdwijnen uit de HGE-teller.</td><td>NB5 VS Kapitaal analyse, eigen WIP docx</td><td class="ok">✅ Ja — Dealroom exits × oprichtingsjaar × WN-groei</td></tr>
+<tr><td><strong>F3</strong></td><td><strong>PE/VC buyouts amper 2% van exits</strong> (vs 30-40% NL/VS) — minder late-stage kapitaal = minder brandstof voor doorgroei. Founder recycling quasi onbestaand (0,7%).</td><td>NB5 analyse, WIP docx</td><td class="ok">✅ Ja — Dealroom × HGE overlap</td></tr>
+<tr><td><strong>F4</strong></td><td><strong>Subsidiebeleid optimaliseert op verkeerde metric</strong> — vrijstelling sociale bijdragen eerste werknemer deed aantal eenmanszaken stijgen, maar geen scale-ups. Veel starters = weinig doorgroeiers.</td><td>NBB Economic Review 2025 H10</td><td class="warn">⚠️ Indirect — VLAIO-subsidie × HGE dekkingsgraad (vraag A1-A4)</td></tr>
+</tbody>
+</table></div>
+
+<h3>Categorie O: Organisatorische capaciteit</h3>
+<div class="tw"><table>
+<thead><tr><th>#</th><th>Hypothese</th><th>Bron</th><th>Testbaar?</th></tr></thead>
+<tbody>
+<tr><td><strong>O1</strong></td><td><strong>Organisatorische onvolwassenheid</strong> — 37% Belgische scale-ups heeft hoge groeiambitie, maar scoort 17pt lager op organisatorische maturiteit: governance (43%), sales replicability (38%), operationele schaalbaarheid (51%).</td><td>Deloitte/Vlerick Rising Star Monitor 2025</td><td class="no">❌ Niet direct — geen interne maturiteitsdata</td></tr>
+<tr><td><strong>O2</strong></td><td><strong>Innovatie-naar-markt conversieprobleem (VLAANDEREN-SPECIFIEK)</strong> — Vlaanderen scoort torenhoog op innovatie-input (R&amp;D, patenten) maar zwak op commerciële conversie: <strong>sales of new-to-market innovations: VL 82,2% EU-gem</strong> vs WA 165,1% vs BXL 124,4% (RIS 2025). Innovatie geconcentreerd bij kleine groep, niet breed verspreid. Bevestigd door eigen OQ1.</td><td>RIS 2025 (BE2 Vlaanderen), EIS 2025, eigen OQ1 panelanalyse, WIP docx</td><td class="warn">⚠️ Indirect — NACE × innovatiesubsidies × HGE</td></tr>
+<tr><td><strong>O3</strong></td><td><strong>Geen ambitieprobleem maar capaciteitsprobleem</strong> — het gaat niet om gebrek aan wil om te groeien, maar om gebrek aan managementcapaciteit en schaalbare processen.</td><td>Deloitte/Vlerick 2025</td><td class="warn">⚠️ Indirect — OHO-contacten × HGE (vraag A6)</td></tr>
+</tbody>
+</table></div>
+
+<h3>Categorie R: Regulatoire barrières</h3>
+<div class="tw"><table>
+<thead><tr><th>#</th><th>Hypothese</th><th>Bron</th><th>Testbaar?</th></tr></thead>
+<tbody>
+<tr><td><strong>R1</strong></td><td><strong>Restrictieve toetredingseisen professionele diensten</strong> — beschermde beroepen beperken concurrentie en schaalvergroting in dienstensectoren.</td><td>OECD 2026</td><td class="warn">⚠️ Indirect — NACE-level HGE% per sector</td></tr>
+<tr><td><strong>R2</strong></td><td><strong>Complexe insolventieprocedures</strong> — belemmeren herstructurering en "second chance" → minder dynamiek, minder groei na crisis.</td><td>OECD 2026</td><td class="no">❌ Niet met huidige data</td></tr>
+<tr><td><strong>R3</strong></td><td><strong>Hoge startup establishment costs</strong> — ESS Scoreboard indicator 1.1.2. België scoort hier ondergemiddeld.</td><td>ESS Framework (EIC Forum nov 2025)</td><td class="no">❌ Niet met interne data</td></tr>
+</tbody>
+</table></div>
+</section>
+
+<!-- ====== METHODOLOGIE ====== -->
+<section id="methodo">
+<h2>Methodologie: wat kunnen we wél en niet cross-country toetsen?</h2>
+
+<h3>Het probleem</h3>
+<p>We kunnen intern (binnen België) hypothesen testen op firm-level data (NBB, Sequenza, Dealroom, VLAIO-steun). Maar we kunnen <strong>niet</strong> in de Finse of Zweedse firma-data kijken om te begrijpen <em>waarom</em> hun bedrijven wél doorgroeien. Toch is cross-country vergelijking deels mogelijk.</p>
+
+<h3>Wat we WÉL cross-country kunnen toetsen (via Eurostat)</h3>
+<div class="tw"><table>
+<thead><tr><th>Analyse</th><th>Methode</th><th>Beantwoordt</th></tr></thead>
+<tbody>
+<tr><td><strong>Shift-share NACE-decompositie</strong> (OQ3)</td><td>Vergelijk HGE% per sector BE vs FI/NL/SE. Is het sectorsamenstelling (meer diensten in BE) of underperformance binnen dezelfde sectoren?</td><td>Als BE in élke sector lager scoort → het is structureel, niet compositie</td></tr>
+<tr><td><strong>Grootteklasse-verdeling</strong> (OQ6)</td><td><code>bd_hg_micro</code> heeft HGE per size class per land</td><td>Toont of de "missing middle" reëel is vs peers</td></tr>
+<tr><td><strong>Birth/death/survival rates</strong> (OQ12)</td><td>Eurostat business demography per land</td><td>Test S3: is BE dynamism echt lager?</td></tr>
+<tr><td><strong>Omzet vs werknemers</strong> (OQ11)</td><td>Vergelijk of BE relatief beter scoort op omzetgroei-HGE</td><td>Meetmethode-effect: als BE op omzet wél goed scoort → probleem zit in arbeidsgroei specifiek</td></tr>
+<tr><td><strong>Tijdreeks</strong> (OQ13)</td><td>HGE% per land 2012–2024</td><td>Is de gap stabiel, groeiend, of krimpend?</td></tr>
+</tbody>
+</table></div>
+
+<h3>Wat we NIET kunnen toetsen</h3>
+<ul class="plain">
+<li>Waarom specifieke Finse/Zweedse bedrijven wél doorgroeien (geen firm-level data)</li>
+<li>Of andere landen strenger/soepeler filteren op M&amp;A of enterprise profiling (black box per statistiekbureau)</li>
+<li>Interne beleidseffecten in andere landen (hun subsidie-instrumenten, arbeidsmarktbeleid)</li>
+</ul>
+
+<h3>Triangulatie-aanpak</h3>
+<p>De kracht van dit onderzoek zit in de <strong>combinatie van drie pijlers</strong>:</p>
+<pre>┌─────────────────────────────────────────────────────────────────────────┐
+│  1. LITERATUUR (NBB, Vlerick, OECD, JRC)                                │
+│     → Zegt: "België scoort laag door X, Y, Z"                          │
+│     → Levert: verklaringen, internationale vergelijking,                │
+│       causale mechanismen                                               │
+├─────────────────────────────────────────────────────────────────────────┤
+│  2. EUROSTAT (bd_hg, bd_hg_micro, bd_hgnace2_r3, demography)           │
+│     → Toont: WÁÁR de gap zit (welke sectoren, welke                     │
+│       grootteklassen, welke dynamiek-indicatoren)                       │
+│     → Sluit uit: sectorsamenstelling, meetmethode-artefacten            │
+├─────────────────────────────────────────────────────────────────────────┤
+│  3. EIGEN DATA (NBB, Sequenza, Dealroom, VLAIO-steun, KBO)             │
+│     → Toont: wat er BINNEN België speelt                                │
+│     → Levert: regionale split, subsidie-effect, transfers,              │
+│       exits, netwerkpositie, blinde vlekken                             │
+└─────────────────────────────────────────────────────────────────────────┘</pre>
+<p><strong>De logica</strong>: je hoeft Finland niet van binnen te kennen. Je hoeft alleen te tonen dat de gap:</p>
+<ol style="padding-left:1.4rem;font-size:.93rem;line-height:1.9;">
+<li><strong>Niet</strong> komt door sectorsamenstelling (via Eurostat shift-share) → dan blijven structurele factoren over</li>
+<li><strong>Niet</strong> komt door meetmethode (via omzet vs werknemers + VTE vs koppen) → dan is het echt</li>
+<li><strong>Wél</strong> consistent is met de literatuur-verklaringen (arbeidsmarkt, financiering, conversie)</li>
+<li><strong>Wél</strong> intern bevestigd wordt door patronen in eigen data (OQ1: regionaal, OQ5: subsidie-effect)</li>
+</ol>
+<p>Die combinatie maakt het argument overtuigend óók zonder firm-level data uit andere landen.</p>
+</section>
+
+<!-- ====== ONDERZOEKSVRAGEN ====== -->
+<section id="oqs">
+<h2>Onderzoeksvragen die we WÉL kunnen beantwoorden</h2>
+
+<h3>Prioriteit 1 — Direct uitvoerbaar</h3>
+<div class="tw"><table>
+<thead><tr><th>OQ</th><th>Onderzoeksvraag</th><th>Hypothese</th><th>Data</th></tr></thead>
+<tbody>
+<tr><td><strong>OQ1</strong></td><td>Wat is de regionale decompositie (VL/WA/BXL) van de HGE-rate? Hoeveel lager is het federale cijfer door Wallonië/Brussel?</td><td>S4</td><td>gazelles xlsx + eigen berekening</td></tr>
+<tr><td><strong>OQ2</strong></td><td>Hoeveel HGE-kandidaten worden uitgesloten door enterprise profiling (intragroep-transfers)? Is België strenger dan peers?</td><td>M1</td><td>Eigen F7-filter (Sequenza)</td></tr>
+<tr><td><strong>OQ3</strong></td><td>Welke sectoren drijven de gap? NACE-decompositie België vs EU — is het samenstelling of underperformance per sector?</td><td>S5</td><td>Eurostat heatmap + eigen data</td></tr>
+<tr><td><strong>OQ4</strong></td><td>Hoeveel veelbelovende starters worden vóór de 3-jaar HGE-drempel overgenomen? ("verdwenen gazelles")</td><td>F2</td><td>Dealroom exits × oprichtingsjaar × WN-groei</td></tr>
+<tr><td><strong>OQ5</strong></td><td>Hebben HGE met VLAIO-subsidie een hoger groeipad dan HGE zonder? Is er dosis-respons?</td><td>F4</td><td>Al uitgevoerd: HGE Kruisanalyse A1-A4</td></tr>
+</tbody>
+</table></div>
+
+<h3>Prioriteit 2 — Vergt extra analyse</h3>
+<div class="tw"><table>
+<thead><tr><th>OQ</th><th>Onderzoeksvraag</th><th>Hypothese</th><th>Data</th></tr></thead>
+<tbody>
+<tr><td><strong>OQ6</strong></td><td>Wat is het effect van de "missing middle"? Verdeling bedrijfsgrootte België vs peers → kleinere vijver.</td><td>S1</td><td>Eurostat bd_hg_micro (grootteklasse) + eigen noemer</td></tr>
+<tr><td><strong>OQ7</strong></td><td>Hoeveel HGE zitten in groepsstructuren die de groei maskeren? (managementvennootschap-effect)</td><td>S6</td><td>Sequenza GUO × werknemersdata</td></tr>
+<tr><td><strong>OQ8</strong></td><td>Is er complementariteit publiek (VLAIO) + privaat (VC) financiering bij HGE?</td><td>F1, F3</td><td>Dealroom funding × VLAIO-steun × CAGR</td></tr>
+<tr><td><strong>OQ9</strong></td><td>Hebben HGE met OHO-contact betere organisatorische outcomes? (proxy voor O1/O3)</td><td>O1, O3</td><td>kris_ao_reach × HGE</td></tr>
+<tr><td><strong>OQ10</strong></td><td>Welke HGE zijn "stille groeiers" — nergens zichtbaar (geen VLAIO, geen Dealroom, perifeer)? Wat kenmerkt ze?</td><td>D5 blinde vlekken</td><td>Alle bronnen gecombineerd</td></tr>
+</tbody>
+</table></div>
+
+<h3>Prioriteit 3 — Contextanalyse (Eurostat benchmark)</h3>
+<div class="tw"><table>
+<thead><tr><th>OQ</th><th>Onderzoeksvraag</th><th>Hypothese</th><th>Data</th></tr></thead>
+<tbody>
+<tr><td><strong>OQ11</strong></td><td>Hoe verschilt het HGE-patroon tussen "koppen" en "omzet" voor België vs peers?</td><td>M5</td><td>Eurostat bd_hg (beide indicatoren)</td></tr>
+<tr><td><strong>OQ12</strong></td><td>Is de lage Young HGE-score een leeftijdsregistratie-artefact? Hoe verhoudt birth rate × survival × growth zich?</td><td>M6, S3</td><td>Eurostat birth/survival + KBO leeftijd</td></tr>
+<tr><td><strong>OQ13</strong></td><td>Tijdreeks: is België's achterstand stabiel, groeiend, of krimpend? Na COVID anders?</td><td>Alle</td><td>Eurostat tijdreeks 2012–2024 (al in cel 6)</td></tr>
+</tbody>
+</table></div>
+</section>
+
+<!-- ====== OQ1 ====== -->
+<section id="oq1">
+<h2>OQ1: Regionale decompositie HGE-rate <span class="tag rej">S4 verworpen</span></h2>
+<p>Twee methoden: OQ1a (panelvergelijking — overlevende bedrijven) en OQ1b (asymmetrische noemer — officiële Eurostat-methode via NBB jaarrekening).</p>
+<div class="tw"><table>
+<thead><tr><th>Gewest</th><th class="num">OQ1a Panel HGE%</th><th class="num">OQ1b Asym. HGE%</th><th class="num">Noemer</th><th class="num">Teller</th><th class="num">Gewicht</th></tr></thead>
+<tbody>
+<tr><td>Vlaanderen</td><td class="num">68,0%</td><td class="num">7,08%</td><td class="num">20.697</td><td class="num">1.466</td><td class="num"><strong>62,1%</strong></td></tr>
+<tr><td>Wallonië</td><td class="num">70,2%</td><td class="num">6,84%</td><td class="num">8.405</td><td class="num">575</td><td class="num">25,2%</td></tr>
+<tr><td>Brussel</td><td class="num">69,1%</td><td class="num">8,14%</td><td class="num">4.175</td><td class="num">340</td><td class="num">12,5%</td></tr>
+<tr class="rt"><td>Federaal</td><td class="num">68,7%</td><td class="num">7,15%</td><td class="num">33.352</td><td class="num">2.385</td><td class="num">100%</td></tr>
+</tbody>
+</table></div>
+<p class="fn">* Eurostat publicatie: 7,3% (noemer 35.150, teller 2.573). Verschil: NBB ≈ 90% RSZ-dekking.</p>
+<div class="call find"><strong>Gewichtsverdeling is cruciaal</strong> Vlaanderen draagt <strong>62%</strong> van het gewicht in het federale HGE-cijfer. Het maximale verschil tussen regio's is ~1,3pp (OQ1b) of ~2,2pp (OQ1a) — dit verklaart hoogstens 0,2pp van de 1,9pp gap België–EU. Brussel scoort zelfs het <em>hoogst</em> (8,14% asymmetrisch). Het federale probleem is in essentie een Vlaams probleem.</div>
+<div class="call rej"><strong>Conclusie OQ1</strong> Hypothese S4 is <strong>verworpen</strong>. Het probleem is structureel federaal, niet regionaal.</div>
+</section>
+
+<!-- ====== OQ3 ====== -->
+<section id="oq3">
+<h2>OQ3: Shift-share NACE-decompositie BE vs EU-27 <span class="tag rej">S5 verworpen</span></h2>
+<p>Methode: Esteban-Marquillas shift-share. Gap = compositie-effect (sectorsamenstelling) + within-sector effect (performance). Referentie: EU27_2020. Data: Eurostat bd_hg, indicator ENT_HGRWR_PC.</p>
+<div class="kpi">
+  <div class="kc"><div class="v">6,67%</div><div class="l">HGE% België (gewogen)</div></div>
+  <div class="kc"><div class="v">10,92%</div><div class="l">HGE% EU-27 (gewogen)</div></div>
+  <div class="kc"><div class="v">−4,25pp</div><div class="l">Gap België vs EU-27</div></div>
+</div>
+<div class="dbar"><div class="dseg" style="flex:5;background:#6b7280;min-width:60px">0% compositie</div><div class="dseg" style="flex:95;background:#b91c1c">100% within-sector</div></div>
+<div class="tw"><table>
+<thead><tr><th>Sector</th><th class="num">BE%</th><th class="num">EU%</th><th class="num">Gap</th><th>Opmerking</th></tr></thead>
+<tbody>
+<tr><td>Cultuur/sport (R)</td><td class="num">0,3%</td><td class="num">14,0%</td><td class="num">−13,7pp</td><td>Mogelijk meetprobleem</td></tr>
+<tr><td>Onderwijs (P)</td><td class="num">0,4%</td><td class="num">11,8%</td><td class="num">−11,4pp</td><td>Mogelijk meetprobleem</td></tr>
+<tr><td>Gezondheidszorg (Q)</td><td class="num">0,1%</td><td class="num">10,1%</td><td class="num">−10,0pp</td><td>Non-profit artefact?</td></tr>
+<tr><td>Energie (D)</td><td class="num">5,9%</td><td class="num">10,4%</td><td class="num">−4,6pp</td><td></td></tr>
+<tr><td>ICT (J)</td><td class="num">12,5%</td><td class="num">16,4%</td><td class="num">−4,0pp</td><td>Sterkste BE-sector</td></tr>
+<tr><td>Bouw (F)</td><td class="num">5,8%</td><td class="num">9,4%</td><td class="num">−3,6pp</td><td></td></tr>
+<tr><td>Industrie (C)</td><td class="num">5,2%</td><td class="num">8,2%</td><td class="num">−3,0pp</td><td></td></tr>
+<tr><td>Handel (G)</td><td class="num">6,3%</td><td class="num">8,6%</td><td class="num">−2,3pp</td><td></td></tr>
+<tr><td>Financiën (K)</td><td class="num">8,4%</td><td class="num">10,5%</td><td class="num">−2,1pp</td><td></td></tr>
+<tr><td>Admin. diensten (N)</td><td class="num">11,6%</td><td class="num">13,3%</td><td class="num">−1,7pp</td><td></td></tr>
+<tr><td>Horeca (I)</td><td class="num">12,5%</td><td class="num">13,7%</td><td class="num">−1,3pp</td><td></td></tr>
+<tr><td>Vervoer/opslag (H)</td><td class="num">10,6%</td><td class="num">11,6%</td><td class="num">−1,0pp</td><td></td></tr>
+<tr><td>Vrije beroepen (M)</td><td class="num">11,2%</td><td class="num">11,9%</td><td class="num">−0,7pp</td><td>Bijna op EU-niveau</td></tr>
+<tr style="background:#dcfce7"><td><strong>Vastgoed (L)</strong></td><td class="num"><strong>9,0%</strong></td><td class="num"><strong>8,0%</strong></td><td class="num"><strong>+1,0pp</strong></td><td><strong>Enige sector waar BE beter scoort</strong></td></tr>
+</tbody>
+</table></div>
+<div class="call warn"><strong>Kanttekening: gelijke sectorgewichten gebruikt</strong> De indicator ENT_ACT_NR (actieve ondernemingen per sector) zit niet in bd_hg. Gelijke gewichten zijn gebruikt als fallback. Met echte gewichten zou de gap iets kleiner uitvallen — maar de conclusie verandert niet. Extreem lage BE-scores in P, Q, R (0,1–0,4%) verdienen nader onderzoek bij Statbel.</div>
+<div class="call rej"><strong>Conclusie OQ3</strong> Hypothese S5 is <strong>weerlegd</strong>. De gap is 100% within-sector: België presteert in <em>elke</em> sector zwakker dan het EU-gemiddelde. Zelfs in BE's sterkste sectoren (ICT 12,5%, Horeca 12,5%) zit België onder het EU-gemiddelde. Alleen Vastgoed is een uitzondering (+1,0pp).</div>
+</section>
+
+<!-- ====== OQ4 ====== -->
+<section id="oq4">
+<h2>OQ4: Verdwenen gazelles — M&amp;A, buitenlandse dochters en de teller</h2>
+<p>Verliest België potentiële HGE door vroege buitenlandse overnames? Drie sub-vragen onderzocht op de 2.385 HGE en het panel van 3.471 overlevende bedrijven.</p>
+<div class="call find"><strong>Contra-intuïtief: buitenlandse dochters HELPEN de Belgische HGE-score</strong> Ze converteren vaker tot HGE dan Belgische bedrijven. Zonder hen zou België <em>nog lager</em> scoren. De 308 M&amp;A-verdachte zijn overwegend Belgische kopers — niet zelf overgenomen.</div>
+<h3>Echte verdwenen gazelles (F2-hypothese)</h3>
+<div class="tw"><table>
+<thead><tr><th>Groep</th><th class="num">Aantal</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Noemer 2020 (alle ≥10 koppen)</td><td class="num">33.352</td><td>Startpopulatie</td></tr>
+<tr><td>Panel 2023 (overlevenden)</td><td class="num">3.471</td><td>In scope referentietabel</td></tr>
+<tr class="rt"><td>"Verdwenen" bedrijven</td><td class="num">~29.881</td><td>Faillissement, fusie, krimp &lt;10, data-gap</td></tr>
+</tbody>
+</table></div>
+<p>Als een significant deel werd overgenomen vóór HGE-status, verdwijnen ze uit de teller. Cross-referentie met Belgian Exits 2020–2024 data nodig.</p>
+</section>
+
+<!-- ====== BRONNEN ====== -->
+<section id="bronnen">
+<h2>Bronnen &amp; referenties</h2>
+
+<h3>Geëvalueerde academische &amp; beleidsbronnen</h3>
+<div class="tw"><table>
+<thead><tr><th>Ref</th><th>Volledige citatie</th><th>URL</th></tr></thead>
+<tbody>
+<tr><td><strong>NBB 2025</strong></td><td>Bijnens, G. (2025). "Reigniting growth: trends and challenges for business dynamism in Belgium". <em>NBB Economic Review</em>, No 10.</td><td><a href="https://www.nbb.be/en/news-events/news/belgium-needs-more-scale-ups-not-just-start-ups" target="_blank">nbb.be</a></td></tr>
+<tr><td><strong>NBB 2017</strong></td><td>De Mulder, J., Godefroid, H. &amp; Swartenbroekx, C. (2017). "Up or out? Portrait of young high-growth firms in Belgium". <em>NBB Economic Review</em>, 2017/III, Ch. 5.</td><td>—</td></tr>
+<tr><td><strong>NBB 2018</strong></td><td>"Decomposing firm dynamics". <em>NBB Economic Review</em>, 2018/II, Ch. 2.</td><td>—</td></tr>
+<tr><td><strong>OECD 2026</strong></td><td>OECD (2026). <em>Foundations for Growth</em> — Belgium chapter.</td><td><a href="https://www.oecd.org/en/publications/foundations-for-growth_ea89f763-en.html" target="_blank">oecd.org</a></td></tr>
+<tr><td><strong>Vlerick 2025a</strong></td><td>Standaert, T., Collewaert, V. &amp; Vanacker, T. (2025). "Belgian policy is insufficiently geared to stimulating scale-ups". <em>Vlerick Policy Paper</em>. 33 landen, 4 juridische factoren.</td><td><a href="https://www.vlerick.com/en/insights/belgian-policy-is-insufficiently-geared-to-stimulating-scale-ups/" target="_blank">vlerick.com</a></td></tr>
+<tr><td><strong>Vlerick/Deloitte 2025b</strong></td><td>Deloitte &amp; Vlerick Business School (2025). <em>Rising Star Monitor</em>, 10th Edition. Organisatorische maturiteit Belgische scale-ups.</td><td>—</td></tr>
+<tr><td><strong>JRC 2020</strong></td><td>Flachenecker, F. et al. (2020). "High Growth Enterprises: demographics, financing &amp; policy measures". <em>JRC Technical Report</em> JRC119788.</td><td>—</td></tr>
+<tr><td><strong>JRC COVID</strong></td><td>"HGE in the COVID-19 Crisis Context". <em>JRC Factsheet</em> JRC124469.</td><td>—</td></tr>
+<tr><td><strong>EIS 2025</strong></td><td>European Commission (2025). <em>European Innovation Scoreboard 2025</em> — Belgium Country Profile.</td><td><a href="https://ec.europa.eu/assets/rtd/eis/2025/ec_rtd_eis-country-profile-be.pdf" target="_blank">ec.europa.eu</a></td></tr>
+<tr><td><strong>RIS 2025</strong></td><td>European Commission (2025). <em>Regional Innovation Scoreboard 2025</em> — Belgium regional profile (BE1/BE2/BE3).</td><td><a href="https://ec.europa.eu/research-and-innovation/en/statistics/performance-indicators/regional-innovation-scoreboard" target="_blank">ec.europa.eu</a></td></tr>
+<tr><td><strong>Eurostat</strong></td><td>Eurostat (2025). <em>Statistics Explained — Entrepreneurship indicators</em> (juni 2025). Datasets <code>bd_hg</code>, <code>bd_hg_micro</code>, <code>bd_hgnace2_r3</code>.</td><td><a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Entrepreneurship_indicators" target="_blank">eurostat</a></td></tr>
+<tr><td><strong>ESS 2025</strong></td><td>European Commission / EIC Forum (2025). <em>European Startup and Scaleup Scoreboard</em> — Background Note (nov 2025). Indicator framework 4FRONT/EFIS/Dealroom.</td><td>—</td></tr>
+</tbody>
+</table></div>
+<p class="fn">Alle lokale paden relatief tot: <code>/Volumes/afdeling_vlaio_netwerk_prd/analist/analist/SU_SCU/</code></p>
+
+<h3>Kerncitaten per hypothese</h3>
+<div class="tw"><table>
+<thead><tr><th>Hyp.</th><th>Kernuitspraak</th><th>Bron (gevalideerd)</th></tr></thead>
+<tbody>
+<tr><td><strong>F4</strong></td><td>"Beleid dat starters ondersteunt, produceert niet noodzakelijk scale-ups. De vrijstelling sociale bijdragen eerste werknemer deed vooral aantal eenmanszaken stijgen, zonder blijvende jobcreatie."</td><td><strong>NBB 2025</strong> (Bijnens), p. 3–5</td></tr>
+<tr><td><strong>S2</strong></td><td>"De strak gereguleerde arbeidsmarkt en hoge loonkosten vertragen de verschuiving van werknemers van krimpende naar groeiende bedrijven."</td><td><strong>NBB 2025</strong> (Bijnens), p. 8–12</td></tr>
+<tr><td><strong>F1</strong></td><td>"België scoort 23e/33 landen op HGE-aandeel; achterstand zit bij schuldfinanciering. Arbeidsmarktflexibiliteit zelf is géén verklarende factor — Portugal en Spanje scoren goed óndanks strenge arbeidswetgeving."</td><td><strong>Vlerick 2025a</strong> (Standaert, Collewaert, Vanacker)</td></tr>
+<tr><td><strong>O1</strong></td><td>"37% Belgische scale-ups heeft hoge groeiambitie maar scoort 17pt lager op organisatorische maturiteit: governance (43%), sales replicability (38%), operationele schaalbaarheid (51%)."</td><td><strong>Vlerick/Deloitte 2025b</strong> (RSM 10th Edition)</td></tr>
+<tr><td><strong>S3</strong></td><td>"Zwakke business dynamism als rem op productiviteitsgroei: buitensporige regeldruk, restrictieve toetredingseisen, complexe insolventieprocedures."</td><td><strong>OECD 2026</strong> (Foundations for Growth, Belgium)</td></tr>
+<tr><td><strong>O2</strong></td><td>"Vlaanderen: sales of new-to-market innovations = 82,2% EU-gem (een van de laagst gerangschikte indicatoren). Wallonië: 165,1%. Brussel: 124,4%."</td><td><strong>RIS 2025</strong> (BE2 Vlaanderen profile)</td></tr>
+<tr><td><strong>S4</strong></td><td>"Young HGE (2022): België 0,2 vs EU 0,8 — factor 4 lager. Structurele zwakte geïdentificeerd."</td><td><strong>EIS 2025</strong> (Belgium Country Profile)</td></tr>
+</tbody>
+</table></div>
+
+<h3>Interne documenten (werkdocumenten)</h3>
+<div class="tw"><table>
+<thead><tr><th>Bestand</th><th>Inhoud</th></tr></thead>
+<tbody>
+<tr><td><code>inbox/wip- eu hgf and young hgf.docx</code></td><td>WIP synthese: literatuuroverzicht + regionale analyse + RIS-bevindingen + link eigen ecosysteemwerk</td></tr>
+<tr><td><code>inbox/Plan van aanpak Drill Down Eurostat variabelen op Vlaams niveau.docx</code></td><td>Variabelenlijst Eurostat + ESS framework + eigen werknotities (Sequenza, Thomas-overleg)</td></tr>
+<tr><td><code>inbox/gazelles vs startups.xlsx</code></td><td>Sequenza extract: 128 HGF VL, 1671 bedrijven, NUTS2-split, CAGR berekening</td></tr>
+</tbody>
+</table></div>
+
+<h3>Eigen notebooks</h3>
+<div class="tw"><table>
+<thead><tr><th>Notebook</th><th>Inhoud</th></tr></thead>
+<tbody>
+<tr><td><strong>onderzoek Eurostat HGE Analyse Vlaanderen</strong></td><td>Volledige methodiek, Eurostat download, kruisvalidatie studies, filter-waterfall, definitieve berekening 7,3%</td></tr>
+<tr><td><strong>HGE Kruisanalyse Onderzoeksvragen</strong></td><td>Subsidie × HGE dekkingsgraad, timing, dosis-respons, KMOGS deep-dive</td></tr>
+<tr><td><strong>HGE Referentietabel en Onderzoek</strong></td><td>Referentietabel definitie + opslag (<code>hge_eurostat_referentie_2023</code>, <code>hge_onderzoek_2023</code>)</td></tr>
+<tr><td><strong>Young HGE Gazelles Analyse Vlaanderen</strong></td><td>Young HGE / gazelles berekening (105 bedrijven, standalone filter v5.0)</td></tr>
+<tr><td><strong>Belgian Exits 2020-2025 Enrichment</strong></td><td>Orbis M&amp;A deals Belgische targets (exits-data voor hypothese F2/F3)</td></tr>
+</tbody>
+</table></div>
+</section>
+
+<!-- ====== VOLGENDE STAPPEN ====== -->
+<section id="volgende">
+<h2>Volgende stappen</h2>
+<ol style="padding-left:1.4rem;font-size:.93rem;line-height:2;">
+<li><strong>OQ1–OQ3 uitwerken</strong> in dit notebook — regionale split, enterprise profiling impact, NACE-decompositie <span class="tag ok">gedaan</span></li>
+<li><strong>OQ4</strong> koppelen aan NB5 (VS Kapitaal) resultaten — "verdwenen gazelles" quantificeren</li>
+<li><strong>OQ5 samenvatten</strong> uit bestaande HGE Kruisanalyse resultaten</li>
+<li>Resultaten bundelen in een <strong>presentatie-ready overzicht</strong> per hypothese: "wat zegt de literatuur" + "wat zeggen onze data"</li>
+</ol>
+</section>
+
+</main>
+<footer>
+  <p>VLAIO Netwerk &amp; Data · Analyse: Pieter de Vreese · Juli 2026 · <a href="https://www.vlaio.be">vlaio.be</a></p>
+  <p style="margin-top:.4rem">Data: Eurostat bd_hg, NBB jaarrekening, Sequenza, eigen referentietabel 2023 · Definitie HGE: Eurostat (≥10 WN, NACE B–S excl. O/S94, 10%+ groei 3 jaar)</p>
+</footer>
+</body>
+</html>
