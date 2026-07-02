@@ -82,6 +82,7 @@ footer a{color:var(--g);text-decoration:none;}
     <li><a href="#oq12">OQ12</a></li>
     <li><a href="#oq13">OQ13</a></li>
     <li><a href="#oq14">OQ14</a></li>
+    <li><a href="#balans">Balans</a></li>
     <li><a href="#status">Status</a></li>
     <li><a href="#bronnen">Bronnen</a></li>
     <li><a href="index.html">← Index</a></li>
@@ -122,12 +123,13 @@ footer a{color:var(--g);text-decoration:none;}
 <div class="tw"><table>
 <thead><tr><th>#</th><th>Hypothese</th><th>Bron</th><th>Status</th></tr></thead>
 <tbody>
-<tr><td><strong>S1</strong></td><td><strong>KMO-landschap met weinig middelgrote bedrijven</strong> — de "missing middle" = kleinere vijver voor HGE.</td><td>Plan van aanpak docx</td><td class="warn">⚠️ Niet bevestigd (OQ6: "missing large", niet middle)</td></tr>
+<tr><td><strong>S1</strong></td><td><strong>KMO-landschap met weinig middelgrote bedrijven</strong> — de "missing middle" = kleinere vijver voor HGE. Het "missing large"-patroon is echter EU-breed (JRC SME Review 2024): productiviteitskloof SME vs grote bedrijven is universeel.</td><td>Plan van aanpak docx, JRC SME Review 2024</td><td class="ok">✅ Getest — deels verworpen. Kleinere vijver is reëel, maar "missing large"-patroon is internationaal, geen BE-specifiek mechanisme. Verklaart de HGE-gap niet zelfstandig.</td></tr>
 <tr><td><strong>S2</strong></td><td><strong>Arbeidsmarktrigiditeit + hoge loonkost</strong> — vertraagt reallocatie werknemers. Hoogste arbeidskost EU na LU.</td><td>NBB 2025 H10 (Bijnens)</td><td class="ok">✅ Bevestigd OQ11 (2 onafhankelijke wegen)</td></tr>
-<tr><td><strong>S3</strong></td><td><strong>Zwakke business dynamism</strong> — lage instroom/uitstroom, complexe insolventieprocedures.</td><td>OECD 2026</td><td class="ok">✅ Bevestigd OQ12 (4 bronnen): laagste death rate EU</td></tr>
+<tr><td><strong>S3</strong></td><td><strong>Zwakke business dynamism</strong> — lage instroom/uitstroom van bedrijven, complexe insolventieprocedures belemmeren creatieve destructie.</td><td>OECD 2026, OECD 2019 Productivity Review, Bijnens &amp; Konings 2020</td><td class="ok">✅ Getest — zombie-aandeel BE niet hoger dan peers (OECD 2019). Business dynamism-zwakte zelf bevestigd (Bijnens &amp; Konings 2020: HGF-uittrede 13→9%), maar zombiedensiteit verklaart HGE-gap niet specifiek. Mechanisme zit in within-sector performance (OQ3).</td></tr>
 <tr style="background:#fef2f2"><td><strong>S4 ❌</strong></td><td><del>Wallonië en Brussel drukken het federale cijfer</del> — <strong>WEERLEGD door OQ1</strong>. Alle regio's nagenoeg gelijk. VL draagt 62% gewicht.</td><td>Eigen OQ1a+OQ1b</td><td class="no">Verworpen</td></tr>
 <tr style="background:#fef2f2"><td><strong>S5 ❌</strong></td><td><strong>Sectorsamenstelling</strong> — <strong>WEERLEGD door OQ3</strong>: 100% within-sector effect. BE scoort in elke sector lager.</td><td>Eurostat, JRC 2020</td><td class="no">Verworpen</td></tr>
-<tr><td><strong>S6</strong></td><td><strong>Managementvennootschappen/holdingstructuren</strong> — echte groei verborgen achter structuren die niet in noemer tellen.</td><td>Plan van aanpak docx</td><td class="warn">⚠️ Deels — Sequenza groepsdata beschikbaar</td></tr>
+<tr><td><strong>S6</strong></td><td><strong>Managementvennootschappen/holdingstructuren</strong> — beheren de feitelijke activiteit; hypothese: vervuilen de Eurostat-noemer.</td><td>Plan van aanpak docx ("Bart zijn aanname")</td><td class="ok">✅ Grotendeels zelf-oplossend — 10-WN drempel sluit ze standaard al uit. Groepsstructuureffect gecapteerd via M1/F7-filter (308 bedrijven). Niet als zelfstandige verklaring voor de gap.</td></tr>
+<tr><td><strong>S7</strong></td><td><strong>Coördinatiecentra/hoofdkantoren multinationals</strong> — grote Belgische dochters van internationale groepen vullen de noemer met entiteiten die structureel moeilijk organische HGE-groei kunnen realiseren (al op schaal).</td><td>Hypothese (eigen analyse, 02/07/2026)</td><td class="warn">❓ Ongetest — plausibel maar niet bevestigd of weerlegd. Vereist NBB-data × GUO_land × koppen-traject.</td></tr>
 </tbody></table></div>
 
 <h3>Categorie F: Financiering &amp; ecosysteem</h3>
@@ -157,6 +159,32 @@ footer a{color:var(--g);text-decoration:none;}
 <tr><td><strong>R2</strong></td><td><strong>Complexe insolventieprocedures</strong></td><td>OECD 2026</td><td class="no">✗ Niet met huidige data</td></tr>
 <tr><td><strong>R3</strong></td><td><strong>Hoge startup establishment costs</strong></td><td>ESS Framework, EIC Forum 2025</td><td class="no">✗ Niet met interne data</td></tr>
 </tbody></table></div>
+</section>
+
+<section id="balans">
+<h2>Balans: wat staat en wat niet — synthese per oorzaak</h2>
+<h3>Hypothesen die NIET standhielden</h3>
+<div class="tw"><table>
+<thead><tr><th>Hypothese</th><th>Conclusie</th></tr></thead>
+<tbody>
+<tr><td>Zombiebedrijven vervuilen de noemer (S3)</td><td>Zombie-aandeel BE niet hoger dan peers — verklaart de gap niet</td></tr>
+<tr><td>Holdingmaatschappijen vervuilen de noemer</td><td>Al standaard uitgesloten via NACE 64.2, EU-breed identiek toegepast</td></tr>
+<tr><td>Managementvennootschappen vervuilen de noemer (S6)</td><td>Grotendeels zelf-oplossend via 10-WN drempel</td></tr>
+<tr><td>Cijfer is verouderd</td><td>Geüpdatet naar 2023 — richting ongewijzigd, minder extreem</td></tr>
+<tr><td>VL/WA-verschil toont regionaal probleem (S4)</td><td>Regio's scoren nagenoeg gelijk — bevestigt de brede Belgische zwakte (OQ1)</td></tr>
+<tr><td>"Missing middle" als BE-specifiek mechanisme (S1)</td><td>Patroon is internationaal (JRC SME Review 2024) — geen Belgische afwijking</td></tr>
+</tbody></table></div>
+<h3>Wat overeind staat — ≥5 onafhankelijke bronnen bevestigen</h3>
+<p>OECD Productivity Review (2019), OECD Foundations for Growth (2026), OECD Employment Outlook (2025, expliciet BE bij negatieve jobreallocatie), Bijnens &amp; Konings (2020, 30 jaar data), en Eurostat bd_hg zelf wijzen alle in dezelfde richting: <strong>zwakke bedrijfsdynamiek, weinig conversie van jong naar groot, arbeid stroomt niet naar productievere bedrijven</strong>.</p>
+<h3>Vervolledigende bevindingen</h3>
+<div class="tw"><table>
+<thead><tr><th>Bevinding</th><th>Cijfer</th><th>Implicatie</th></tr></thead>
+<tbody>
+<tr><td><strong>Omzet-scalers</strong>: België scoort boven EU-gemiddelde op omzetgroei-HGE</td><td>17,1% (OECD)</td><td>Probleem zit specifiek bij werkgelegenheidsgroei, niet bij economische groei in het algemeen</td></tr>
+<tr><td><strong>Consistentie na scale-up</strong>: eenmaal doorgegroeid, houden Belgische HGE dat goed vast</td><td>Top 3 van 15–17 landen</td><td>Niet het vasthouden maar het bereiken van de scale-up drempel is het knelpunt</td></tr>
+</tbody></table></div>
+<div class="call warn"><strong>Openstaande hypothese — S7 (ongetest)</strong> Coördinatiecentra/hoofdkantoren multinationals: grote Belgische dochters van internationale groepen vullen de noemer zonder organisch groei-potentieel. Plausibel maar niet bevestigd of weerlegd. Vereist NBB-data × GUO_land × koppen-traject.</div>
+<div class="call conc"><strong>Eerlijk eindantwoord</strong> Het Eurostat-koppen-cijfer kan niet weggeredeneerd worden — het is grondig getest en houdt stand. Maar het kan wél gepreciseerd worden: <strong>België's probleem is specifiek de conversie naar werkgelegenheidsgroei</strong> (te weinig jonge bedrijven die uitgroeien tot grote werkgevers), niet een algemeen gebrek aan economische dynamiek.</div>
 </section>
 
 <section id="methodo">
